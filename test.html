@@ -61,28 +61,28 @@
         
         body.pattern-dotted {
             background-image: radial-gradient(var(--pattern-color) 2px, transparent 2.5px);
-            background-size: 40px 40px;
+            background-size: 80px 80px;
         }
         
         body.pattern-grid {
             background-image: linear-gradient(var(--pattern-color) 1px, transparent 1px), linear-gradient(90deg, var(--pattern-color) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-size: 100px 100px;
         }
         
         body.pattern-diagonal {
-            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 2px, transparent 2px, transparent 40px);
+            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 2px, transparent 2px, transparent 80px);
         }
         
         body.pattern-crosshatch {
-            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 50px),
-                              repeating-linear-gradient(-45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 50px);
+            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px),
+                              repeating-linear-gradient(-45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px);
         }
         
         body.pattern-waves {
-            background-image: radial-gradient(circle at 20px 20px, transparent 20px, var(--pattern-color) 21px, var(--pattern-color) 22px, transparent 23px),
-                              radial-gradient(circle at 20px 20px, transparent 20px, var(--pattern-color) 21px, var(--pattern-color) 22px, transparent 23px);
-            background-size: 80px 80px;
-            background-position: 0 0, 40px 40px;
+            background-image: radial-gradient(circle at 40px 40px, transparent 40px, var(--pattern-color) 41px, var(--pattern-color) 42px, transparent 43px),
+                              radial-gradient(circle at 40px 40px, transparent 40px, var(--pattern-color) 41px, var(--pattern-color) 42px, transparent 43px);
+            background-size: 160px 160px;
+            background-position: 0 0, 80px 80px;
         }
         
         body.pattern-zigzag {
@@ -90,8 +90,8 @@
                               linear-gradient(225deg, var(--pattern-color) 25%, transparent 25%),
                               linear-gradient(315deg, var(--pattern-color) 25%, transparent 25%),
                               linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%);
-            background-position: -20px 0, -20px 0, 0 0, 0 0;
-            background-size: 40px 40px;
+            background-position: -40px 0, -40px 0, 0 0, 0 0;
+            background-size: 80px 80px;
         }
         
         body.pattern-hearts::before {
@@ -99,7 +99,7 @@
             background-color: var(--pattern-color);
             -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
             mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-            -webkit-mask-size: 64px 64px; mask-size: 64px 64px;
+            -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
             -webkit-mask-repeat: repeat; mask-repeat: repeat;
             z-index: -1; pointer-events: none;
         }
@@ -308,6 +308,16 @@
 
         .tiled-btn .material-icons-outlined {
             font-size: 28px;
+        }
+        
+        .tiled-btn span:not(.material-icons-outlined) {
+            font-size: 0.75rem;
+        }
+
+        .main-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
 
         .menu-day-square {
@@ -794,6 +804,35 @@
                 border: none !important;
                 border-radius: 0 !important;
             }
+
+            /* Dashboard Menu scaling */
+            #main-menu-popup {
+                display: flex;
+                flex-direction: column;
+            }
+            #main-menu-popup h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .main-menu-grid {
+                flex: 1; 
+                gap: 15px;
+            }
+            .tiled-btn {
+                padding: 0; 
+            }
+            .tiled-btn .material-icons-outlined {
+                font-size: 46px !important;
+                margin-bottom: 8px;
+            }
+            .tiled-btn span:not(.material-icons-outlined) {
+                font-size: 1.1rem !important;
+            }
+            #main-menu-popup .popup-btn {
+                padding: 20px;
+                font-size: 1.3rem;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -861,42 +900,42 @@
     <!-- MAIN GRID MENU POPUP -->
     <div id="main-menu-popup" class="popup">
         <h2 style="border-bottom: 2px solid var(--border-color); margin-bottom: 15px;">Menu</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        <div class="main-menu-grid">
             <button class="tiled-btn" onclick="showAddPopup()">
                 <span class="material-icons-outlined">add</span>
-                <span style="font-size: 0.75rem;">New</span>
+                <span>New</span>
             </button>
             <button class="tiled-btn" onclick="showSearchPopup()">
                 <span class="material-icons-outlined">search</span>
-                <span style="font-size: 0.75rem;">Search</span>
+                <span>Search</span>
             </button>
             <button class="tiled-btn" onclick="showDatePopup()">
                 <span class="material-icons-outlined">calendar_month</span>
-                <span style="font-size: 0.75rem;">Dates</span>
+                <span>Dates</span>
             </button>
             <button class="tiled-btn" onclick="showTodaySummaryPopup()">
                 <span class="material-icons-outlined">notifications</span>
-                <span style="font-size: 0.75rem;">Brief</span>
+                <span>Brief</span>
             </button>
             <button class="tiled-btn" onclick="showUpcomingPopup()">
                 <span class="material-icons-outlined">timeline</span>
-                <span style="font-size: 0.75rem;">Upcoming</span>
+                <span>Upcoming</span>
             </button>
             <button class="tiled-btn" onclick="showDreamsPopup()">
                 <span class="material-icons-outlined">cloud</span>
-                <span style="font-size: 0.75rem;">Dreams</span>
+                <span>Dreams</span>
             </button>
             <button class="tiled-btn" onclick="openShiftPlanner()">
                 <span class="material-icons-outlined">work</span>
-                <span style="font-size: 0.75rem;">Shifts</span>
+                <span>Shifts</span>
             </button>
             <button class="tiled-btn" onclick="showPocketPopup()">
                 <span class="material-icons-outlined">archive</span>
-                <span style="font-size: 0.75rem;">Pocket</span>
+                <span>Pocket</span>
             </button>
             <button class="tiled-btn" onclick="showPastEventsPopup()">
                 <span class="material-icons-outlined">history</span>
-                <span style="font-size: 0.75rem;">History</span>
+                <span>History</span>
             </button>
         </div>
         <button class="popup-btn" style="margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;" onclick="showAccountPopup()">
