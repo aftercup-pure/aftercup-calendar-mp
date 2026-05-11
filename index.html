@@ -62,20 +62,24 @@
         body.pattern-dotted {
             background-image: radial-gradient(var(--pattern-color) 16px, transparent 17px);
             background-size: 128px 128px;
+            background-position: center;
         }
         
         body.pattern-grid {
             background-image: linear-gradient(var(--pattern-color) 1px, transparent 1px), linear-gradient(90deg, var(--pattern-color) 1px, transparent 1px);
             background-size: 100px 100px;
+            background-position: center;
         }
         
         body.pattern-diagonal {
             background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 2px, transparent 2px, transparent 80px);
+            background-position: center;
         }
         
         body.pattern-crosshatch {
             background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px),
                               repeating-linear-gradient(-45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px);
+            background-position: center;
         }
         
         body.pattern-waves::before {
@@ -85,6 +89,7 @@
             mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,50 Q25,15 50,50 T100,50' fill='none' stroke='black' stroke-width='6'/%3E%3C/svg%3E");
             -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
             -webkit-mask-repeat: repeat; mask-repeat: repeat;
+            -webkit-mask-position: center; mask-position: center;
             z-index: -1; pointer-events: none;
         }
         
@@ -93,7 +98,7 @@
                               linear-gradient(225deg, var(--pattern-color) 25%, transparent 25%),
                               linear-gradient(315deg, var(--pattern-color) 25%, transparent 25%),
                               linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%);
-            background-position: -40px 0, -40px 0, 0 0, 0 0;
+            background-position: calc(50% - 40px) 50%, calc(50% - 40px) 50%, 50% 50%, 50% 50%;
             background-size: 80px 80px;
         }
         
@@ -104,6 +109,7 @@
             mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
             -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
             -webkit-mask-repeat: repeat; mask-repeat: repeat;
+            -webkit-mask-position: center; mask-position: center;
             z-index: -1; pointer-events: none;
         }
 
@@ -130,6 +136,7 @@
             mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M4.9 19.1L19.1 4.9M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M8 8L5 5M8 16l-3 3M16 8l3-3M16 16l3 3' stroke='black' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
             -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
             -webkit-mask-repeat: repeat; mask-repeat: repeat;
+            -webkit-mask-position: center; mask-position: center;
             z-index: -1; pointer-events: none;
         }
 
