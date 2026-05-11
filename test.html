@@ -663,6 +663,21 @@
             line-height: 1.8;
             margin-top: 15px;
         }
+
+        /* E-INK: Fullscreen Popups on Mobile */
+        @media (max-width: 768px) {
+            .popup, .search-popup, .sp-select-popup {
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                max-height: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+        }
     </style>
 </head>
 <body class="light-theme">
