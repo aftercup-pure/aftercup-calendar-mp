@@ -240,6 +240,18 @@
             font-size: 28px;
         }
 
+        .menu-day-square {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: var(--font-mono);
+        }
+
         .content-area {
             flex: 1;
             padding: 10px;
@@ -686,8 +698,11 @@
             .header-date {
                 font-size: 1.1rem;
             }
-            #main-menu-btn .material-icons-outlined {
-                font-size: 38px !important;
+            .menu-day-square {
+                width: 46px;
+                height: 46px;
+                font-size: 1.6rem;
+                border-width: 3px;
             }
 
             .popup, .search-popup, .sp-select-popup {
@@ -715,9 +730,9 @@
         </div>
 
         <div class="header-right" id="header-right-section">
-            <!-- E-INK: Consolidated Tiled Menu Button -->
+            <!-- E-INK: Consolidated Tiled Menu Button (Now a Date Square) -->
             <button class="icon-btn" id="main-menu-btn" onclick="showMainMenuPopup()" aria-label="Menu">
-                <span class="material-icons-outlined" style="font-size: 28px;">grid_view</span>
+                <div id="menu-day-number" class="menu-day-square"></div>
             </button>
         </div>
     </header>
@@ -1810,6 +1825,8 @@
           document.getElementById('header-day-name').textContent = dayNamesFull[currentDate.getDay()];
           document.getElementById('header-full-date').textContent = `${monthNamesFull[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
           
+          const menuDayNum = document.getElementById('menu-day-number');
+          if (menuDayNum) menuDayNum.textContent = currentDate.getDate();
 
           const dateInfoElDesktop = document.getElementById('desktop-date-info');
           if (dateInfoElDesktop) updateDateInfo(dateInfoElDesktop, currentDate);
