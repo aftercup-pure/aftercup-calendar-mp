@@ -18,6 +18,7 @@
             --text-color: #000000;
             --border-color: #000000;
             --accent-color: #000000;
+            --pattern-color: rgba(0, 0, 0, 0.5); /* 50% visibility for patterns */
             --secondary-bg: #ffffff; /* E-INK: Pure white for maximum contrast */
             --line-width: 2px;
             --font-main: 'Inter', sans-serif;
@@ -29,6 +30,7 @@
             --text-color: #ffffff;
             --border-color: #ffffff;
             --accent-color: #ffffff;
+            --pattern-color: rgba(255, 255, 255, 0.5); /* 50% visibility for patterns */
             --secondary-bg: #000000;
         }
 
@@ -52,6 +54,74 @@
             flex-direction: column;
             overflow: hidden;
             font-weight: 600; /* E-INK: Bolder base font for legibility */
+        }
+
+        /* --- PATTERN DEFINITIONS --- */
+        body.pattern-none { background-image: none; }
+        
+        body.pattern-dotted {
+            background-image: radial-gradient(var(--pattern-color) 2px, transparent 2.5px);
+            background-size: 40px 40px;
+        }
+        
+        body.pattern-grid {
+            background-image: linear-gradient(var(--pattern-color) 1px, transparent 1px), linear-gradient(90deg, var(--pattern-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        body.pattern-diagonal {
+            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 2px, transparent 2px, transparent 40px);
+        }
+        
+        body.pattern-crosshatch {
+            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 50px),
+                              repeating-linear-gradient(-45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 50px);
+        }
+        
+        body.pattern-waves {
+            background-image: radial-gradient(circle at 20px 20px, transparent 20px, var(--pattern-color) 21px, var(--pattern-color) 22px, transparent 23px),
+                              radial-gradient(circle at 20px 20px, transparent 20px, var(--pattern-color) 21px, var(--pattern-color) 22px, transparent 23px);
+            background-size: 80px 80px;
+            background-position: 0 0, 40px 40px;
+        }
+        
+        body.pattern-zigzag {
+            background-image: linear-gradient(135deg, var(--pattern-color) 25%, transparent 25%),
+                              linear-gradient(225deg, var(--pattern-color) 25%, transparent 25%),
+                              linear-gradient(315deg, var(--pattern-color) 25%, transparent 25%),
+                              linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%);
+            background-position: -20px 0, -20px 0, 0 0, 0 0;
+            background-size: 40px 40px;
+        }
+        
+        body.pattern-hearts::before {
+            content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--pattern-color);
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            -webkit-mask-size: 64px 64px; mask-size: 64px 64px;
+            -webkit-mask-repeat: repeat; mask-repeat: repeat;
+            z-index: -1; pointer-events: none;
+        }
+
+        body.pattern-none .date-navigation,
+        body.pattern-none .no-events-message {
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+        .pattern-btn {
+            padding: 8px 2px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .pattern-btn.selected {
+            background: var(--text-color);
+            color: var(--bg-color);
         }
 
         .app-header {
@@ -265,9 +335,13 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 15px;
+            margin: 0 auto 15px auto;
             font-family: var(--font-mono);
             font-size: 0.9rem;
+            background: var(--bg-color);
+            padding: 8px 20px;
+            border: var(--line-width) solid var(--border-color);
+            width: fit-content;
         }
         
         .nav-day {
@@ -297,9 +371,13 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            flex: 1;
+            flex: 0;
             font-family: var(--font-mono);
-            margin: 0;
+            margin: 0 auto;
+            background: var(--bg-color);
+            padding: 30px;
+            border: var(--line-width) solid var(--border-color);
+            width: fit-content;
         }
 
         .event-item {
@@ -1069,6 +1147,18 @@
             <button onclick="changeTheme('light')" style="padding: 10px 20px; border: 2px solid #000; font-weight:bold;">Light</button>
             <button onclick="changeTheme('dark')" style="padding: 10px 20px; border: 2px solid #fff; background: #000; color: #fff; font-weight:bold;">Dark</button>
         </div>
+
+        <h3 style="margin-top: 20px;">Pattern</h3>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px;">
+            <button class="pattern-btn" data-pattern="none" onclick="changePattern('none')">None</button>
+            <button class="pattern-btn" data-pattern="dotted" onclick="changePattern('dotted')">Dotted</button>
+            <button class="pattern-btn" data-pattern="grid" onclick="changePattern('grid')">Grid</button>
+            <button class="pattern-btn" data-pattern="diagonal" onclick="changePattern('diagonal')">Diagonal</button>
+            <button class="pattern-btn" data-pattern="crosshatch" onclick="changePattern('crosshatch')">Cross</button>
+            <button class="pattern-btn" data-pattern="waves" onclick="changePattern('waves')">Waves</button>
+            <button class="pattern-btn" data-pattern="hearts" onclick="changePattern('hearts')">Hearts</button>
+            <button class="pattern-btn" data-pattern="zigzag" onclick="changePattern('zigzag')">Zigzag</button>
+        </div>
     </div>
 
     <div id="pocket-popup" class="popup" style="padding: 0; overflow: hidden; height: 80vh;">
@@ -1283,6 +1373,9 @@
 
           const savedTheme = localStorage.getItem('theme') || 'light';
           document.body.className = savedTheme + '-theme';
+
+          const savedPattern = localStorage.getItem('pattern') || 'none';
+          changePattern(savedPattern);
 
           const preAddedToggle = document.getElementById('pre-added-toggle');
           showPreAddedEvents = safeParseJSON('showPreAddedEvents', true);
@@ -2420,11 +2513,29 @@
       }
 
       function changeTheme(themeName) {
-          document.body.className = '';
+          // Remove old theme classes but keep pattern classes
+          document.body.classList.remove('light-theme', 'dark-theme');
           document.body.classList.add(themeName + '-theme');
           localStorage.setItem('theme', themeName);
           setColor(selectedColor);
           updateCalendar();
+      }
+
+      function changePattern(patternName) {
+          const classes = Array.from(document.body.classList);
+          classes.forEach(cls => {
+              if (cls.startsWith('pattern-')) document.body.classList.remove(cls);
+          });
+          document.body.classList.add('pattern-' + patternName);
+          localStorage.setItem('pattern', patternName);
+
+          document.querySelectorAll('.pattern-btn').forEach(btn => {
+              if (btn.getAttribute('data-pattern') === patternName) {
+                  btn.classList.add('selected');
+              } else {
+                  btn.classList.remove('selected');
+              }
+          });
       }
 
       function saveEvents(skipSync = false) {
@@ -2991,7 +3102,7 @@
           if (syncPrefs.events) backup.events = events.filter(e => !e.preAdded);
           if (syncPrefs.dreams) backup.dreams = dreams;
           if (syncPrefs.shifts) backup.shifts = JSON.parse(localStorage.getItem("shifts") || "{}");
-          if (syncPrefs.settings) backup.settings = { theme: localStorage.getItem('theme'), showPreAdded: showPreAddedEvents, notifications: dailyNotificationTimes };
+          if (syncPrefs.settings) backup.settings = { theme: localStorage.getItem('theme'), pattern: localStorage.getItem('pattern') || 'none', showPreAdded: showPreAddedEvents, notifications: dailyNotificationTimes };
           return backup;
       }
 
@@ -3036,6 +3147,7 @@
 
           if (syncPrefs.settings && backup.settings) {
               if (backup.settings.theme) changeTheme(backup.settings.theme);
+              if (backup.settings.pattern) changePattern(backup.settings.pattern);
               if (backup.settings.showPreAdded !== undefined) {
                   showPreAddedEvents = backup.settings.showPreAdded;
                   localStorage.setItem('showPreAddedEvents', JSON.stringify(showPreAddedEvents));
