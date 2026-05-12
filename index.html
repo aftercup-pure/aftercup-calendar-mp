@@ -197,6 +197,11 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 0;
+            cursor: pointer;
+        }
+
+        .header-left:active {
+            opacity: 0.7;
         }
 
         .header-day {
@@ -938,7 +943,7 @@
     <div id="overlay"></div>
 
     <header class="app-header">
-        <div class="header-left" id="header-left-section">
+        <div class="header-left" id="header-left-section" onclick="showDatePopup()">
             <div class="header-day" id="header-day-name">MONDAY</div>
             <div class="header-date" id="header-full-date">January 1, 2024</div>
         </div>
