@@ -17,11 +17,11 @@
             --bg-color: #ffffff;
             --text-color: #000000;
             --border-color: #000000;
-            --divider-color: rgba(0, 0, 0, 0.15); /* Softer divider */
+            --divider-color: rgba(0, 0, 0, 0.15);
             --accent-color: #000000;
             --pattern-opacity: 0.5;
             --pattern-color: rgba(0, 0, 0, var(--pattern-opacity));
-            --secondary-bg: #ffffff; /* E-INK: Pure white for maximum contrast */
+            --secondary-bg: #ffffff;
             --line-width: 2px;
             --font-main: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -37,7 +37,6 @@
             --secondary-bg: #000000;
         }
 
-        /* E-INK OPTIMIZATION: KILL ALL ANIMATIONS AND SHADOWS globally */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
@@ -56,12 +55,11 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            font-weight: 600; /* E-INK: Bolder base font for legibility */
-            user-select: none; /* Disable selection globally */
+            font-weight: 600;
+            user-select: none;
             -webkit-user-select: none;
         }
 
-        /* Re-enable selection for specific areas */
         .event-text, 
         .event-note-preview, 
         .popup input, 
@@ -72,7 +70,6 @@
             -webkit-user-select: text;
         }
 
-        /* --- PATTERN DEFINITIONS --- */
         body.pattern-none { background-image: none; }
         
         body.pattern-dotted {
@@ -449,7 +446,6 @@
             border: none;
             width: fit-content;
             color: var(--text-color);
-            /* Intense outline using the background color */
             text-shadow: 
                 -2px -2px 0 var(--bg-color),  
                  2px -2px 0 var(--bg-color),
@@ -587,7 +583,6 @@
             font-weight: bold;
         }
 
-        /* E-INK: Solid overlay instead of transparent avoids nasty dithering over text */
         #overlay {
             position: fixed;
             top: 0;
@@ -605,7 +600,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: var(--bg-color);
-            border: 4px solid var(--border-color); /* E-INK: Thicker border to stand out from solid overlay */
+            border: 4px solid var(--border-color);
             width: 95%;
             max-width: 500px;
             max-height: 95vh;
@@ -841,7 +836,6 @@
             margin-top: 15px;
         }
 
-        /* E-INK: Fullscreen Popups on Mobile & Dashboard Header */
         @media (max-width: 768px) {
             .app-header {
                 height: 100px;
@@ -869,7 +863,6 @@
                 border-width: 3px;
             }
 
-            /* --- Sticky, full-width, left-aligned date navigation --- */
             .content-area {
                 padding: 0;
             }
@@ -893,9 +886,7 @@
             #events {
                 padding: 15px 15px 40px 15px;
             }
-            /* -------------------------------------------------------- */
 
-            /* --- Mobile Inline Month View --- */
             .sidebar { display: none; }
             
             body.mobile-cal-open .sidebar {
@@ -939,7 +930,6 @@
                 border-radius: 0 !important;
             }
 
-            /* Dashboard Menu scaling */
             #main-menu-popup.active {
                 display: flex;
                 flex-direction: column;
@@ -981,7 +971,6 @@
         </div>
 
         <div class="header-right" id="header-right-section">
-            <!-- E-INK: Consolidated Tiled Menu Button (Now a Date Square) -->
             <button class="icon-btn" id="main-menu-btn" onclick="showMainMenuPopup()" aria-label="Menu">
                 <div id="menu-day-number" class="menu-day-square"></div>
             </button>
@@ -1031,7 +1020,6 @@
         </main>
     </div>
 
-    <!-- MAIN GRID MENU POPUP -->
     <div id="main-menu-popup" class="popup">
         <h2 style="border-bottom: 2px solid var(--border-color); margin-bottom: 15px;">Menu</h2>
         <div class="main-menu-grid">
@@ -1077,7 +1065,6 @@
         </button>
     </div>
 
-    <!-- POPUPS -->
     <div id="add-popup" class="popup">
         <h2>New entry</h2>
         <select id="event-type" onchange="toggleAddPopupFields()">
@@ -1381,10 +1368,9 @@
     <script src="https://apis.google.com/js/api.js" async defer></script>
     <script>
       if (typeof navigator.serviceWorker !== 'undefined') {
-        navigator.serviceWorker.register('sw.js').catch(()=>{}); // Ignore SW errors safely
+        navigator.serviceWorker.register('sw.js').catch(()=>{});
       }
 
-      // Safe JSON parse to prevent crashes on bad local data
       function safeParseJSON(key, fallback) {
           try {
               const val = localStorage.getItem(key);
@@ -1415,7 +1401,7 @@
       let isMobileMiniCalVisible = false;
       function toggleMobileMiniCalendar() {
           if (window.innerWidth > 768) {
-              showDatePopup(); // On desktop, keep normal behavior
+              showDatePopup();
               return;
           }
           isMobileMiniCalVisible = !isMobileMiniCalVisible;
@@ -2709,7 +2695,6 @@
           const eventIndex = events.findIndex(ev => String(ev.id) === String(eventId));
           if (eventIndex > -1) {
               const evt = events[eventIndex];
-              // Ensure we use the actual checked state if available, to prevent desync
               evt.completed = (e && e.target && e.target.type === 'checkbox') ? e.target.checked : !evt.completed;
               evt.lastModified = Date.now();
               saveEvents();
@@ -2786,7 +2771,6 @@
       }
 
       function changeTheme(themeName) {
-          // Remove old theme classes but keep pattern classes
           document.body.classList.remove('light-theme', 'dark-theme');
           document.body.classList.add(themeName + '-theme');
           localStorage.setItem('theme', themeName);
