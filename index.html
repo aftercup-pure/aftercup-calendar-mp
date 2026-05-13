@@ -89,23 +89,6 @@
             background-position: center;
         }
         
-        body.pattern-crosshatch {
-            background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px),
-                              repeating-linear-gradient(-45deg, var(--pattern-color) 0, var(--pattern-color) 1px, transparent 1px, transparent 100px);
-            background-position: center;
-        }
-        
-        body.pattern-waves::before {
-            content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: var(--pattern-color);
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,50 Q25,15 50,50 T100,50' fill='none' stroke='black' stroke-width='6'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,50 Q25,15 50,50 T100,50' fill='none' stroke='black' stroke-width='6'/%3E%3C/svg%3E");
-            -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
-            -webkit-mask-repeat: repeat; mask-repeat: repeat;
-            -webkit-mask-position: center; mask-position: center;
-            z-index: -1; pointer-events: none;
-        }
-        
         body.pattern-zigzag {
             background-image: linear-gradient(135deg, var(--pattern-color) 25%, transparent 25%),
                               linear-gradient(225deg, var(--pattern-color) 25%, transparent 25%),
@@ -138,6 +121,38 @@
         }
 
         body.dark-theme.pattern-horse::before {
+            filter: invert(1);
+            mix-blend-mode: screen;
+        }
+
+        body.pattern-monstera::before {
+            content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("https://i.postimg.cc/G90NZpQM/monstera.png");
+            background-size: 160px auto;
+            background-repeat: repeat;
+            background-position: center center;
+            opacity: var(--pattern-opacity);
+            mix-blend-mode: multiply;
+            z-index: -1; pointer-events: none;
+        }
+
+        body.dark-theme.pattern-monstera::before {
+            filter: invert(1);
+            mix-blend-mode: screen;
+        }
+
+        body.pattern-tulip::before {
+            content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("https://i.postimg.cc/PJv93DWG/tulip.png");
+            background-size: 160px auto;
+            background-repeat: repeat;
+            background-position: center center;
+            opacity: var(--pattern-opacity);
+            mix-blend-mode: multiply;
+            z-index: -1; pointer-events: none;
+        }
+
+        body.dark-theme.pattern-tulip::before {
             filter: invert(1);
             mix-blend-mode: screen;
         }
@@ -1314,11 +1329,11 @@
             <button class="pattern-btn" data-pattern="dotted" onclick="changePattern('dotted')">Dotted</button>
             <button class="pattern-btn" data-pattern="grid" onclick="changePattern('grid')">Grid</button>
             <button class="pattern-btn" data-pattern="diagonal" onclick="changePattern('diagonal')">Diagonal</button>
-            <button class="pattern-btn" data-pattern="crosshatch" onclick="changePattern('crosshatch')">Cross</button>
-            <button class="pattern-btn" data-pattern="waves" onclick="changePattern('waves')">Waves</button>
             <button class="pattern-btn" data-pattern="hearts" onclick="changePattern('hearts')">Hearts</button>
             <button class="pattern-btn" data-pattern="zigzag" onclick="changePattern('zigzag')">Zigzag</button>
             <button class="pattern-btn" data-pattern="horse" onclick="changePattern('horse')">Horse</button>
+            <button class="pattern-btn" data-pattern="monstera" onclick="changePattern('monstera')">Monstera</button>
+            <button class="pattern-btn" data-pattern="tulip" onclick="changePattern('tulip')">Tulip</button>
             <button class="pattern-btn" data-pattern="snowflakes" onclick="changePattern('snowflakes')">Snow</button>
         </div>
 
