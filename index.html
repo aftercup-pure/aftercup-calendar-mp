@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Aftercup Calendar</title>
+    <title>Pure Calendar</title>
     <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1353,6 +1353,10 @@
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 GitHub Source
             </a>
+            <a href="https://github.com/aftercup-pure/" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 10px; border: 2px solid var(--border-color); background: transparent; color: var(--text-color); padding: 12px 15px; font-weight: bold; text-transform: uppercase; text-decoration: none; margin-top: 10px;">
+                <span class="material-icons-outlined" style="font-size: 24px;">storefront</span>
+                Pure Store
+            </a>
         </div>
     </div>
 
@@ -2067,7 +2071,7 @@
           const popup = document.getElementById('pocket-popup');
           popup.classList.add('active');
           const iframe = document.getElementById('pocket-iframe');
-          if (iframe && !iframe.getAttribute('src')) iframe.setAttribute('src', 'https://aftercup-2017.neocities.org/pocket');
+          if (iframe && !iframe.getAttribute('src')) iframe.setAttribute('src', 'https://aftercup.space/pocket.html');
           history.pushState({ popup: 'pocket-popup' }, '', null);
           hideActionButtons();
       }
@@ -3741,11 +3745,5 @@
           } catch (error) { throw error; }
       }
     </script>
-    <script>
-  if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('sw.js')
-  }
-</script>
-
 </body>
 </html>
