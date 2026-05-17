@@ -1,6 +1,6 @@
 {
- "name": "Calendar",
-  "short_name": "Calendar",
+ "name": "Pure Calendar",
+  "short_name": "Pure Calendar",
   "description": "Calendar from Aftercup",
   "id": "/",
   "start_url": "/",
