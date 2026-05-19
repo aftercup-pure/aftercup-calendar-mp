@@ -10,7 +10,7 @@
     "minimal-ui",
     "browser"
   ],
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "orientation": "any",
   "lang": "en-US",
